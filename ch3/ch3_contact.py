@@ -7,7 +7,7 @@ class ContactList(list):
             if name in contact.name:
                 matching_contacts.append(contact)
         return matching_contacts
-        
+
 class Contact:
     all_contacts = ContactList()
 
@@ -23,8 +23,21 @@ class Supplier(Contact):
             f"'{order}' order to '{self.name}'"
         )
 
+# c1 = Contact("John A", "JohnA@example.net")
+# c2 = Contact("John B", "JohnB@example.net")
+# c3 = Contact("John C", "JohnC@example.net")
+# print([c.name for c in Contact.all_contacts.search('John')])
 
-c1 = Contact("John A", "JohnA@example.net")
-c2 = Contact("John B", "JohnB@example.net")
-c3 = Contact("John C", "JohnC@example.net")
-print([c.name for c in Contact.all_contacts.search('John')])
+class LongNameDict(dict):
+        def longest_key(self):
+            longest = None
+            for key in self:
+                if not longest or len(key) > len(longest):
+                    longest = key
+            return longest
+
+longkeys = LongNameDict()
+longkeys['hello'] = 1
+longkeys['longest yet'] = 5
+longkeys['hello2'] = 'world'
+print(longkeys.longest_key())
