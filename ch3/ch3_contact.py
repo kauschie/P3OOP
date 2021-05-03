@@ -29,18 +29,30 @@ class LongNameDict(dict):
                 if not longest or len(key) > len(longest):
                     longest = key
             return longest
+            
+class MailSender:
+    def send_mail(self, message):
+        print("Sending mail to " + self.email)
+        # Add e-mail logic here
 
-# class Friend(Contcat):
-#     def __init__(self, name, email, phone):
-#         self.name = name
-#         self.email = email
-#         self.phone = phone
-#           redundant code that's more difficult to manage
-#           also, we forgot to add to the contact list
+class EmailableContact(Contact, MailSender):
+    pass
 
-class Friend(Contact):
-    def __init__(self, name, email, phone):
-        super().__init__(name, email)
+
+class AddressHolder:
+    def __init__(self, street, city, state, code):
+        self.street = street
+        self.city = city
+        self.state = state
+        self.code = code
+
+class Friend(Contact, AddressHolder):
+    def __init__(
+        self, name, email, phone, street, city, state, code):
+        Contact.__init__(self, name, email)
+        AddressHolder.__init__(self, street, city, state, code)
         self.phone = phone
 
-#       super() returns the object as an instance of the parent class
+
+
+    
