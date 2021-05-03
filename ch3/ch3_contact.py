@@ -22,12 +22,6 @@ class Supplier(Contact):
             "If this were a real system we would send "
             f"'{order}' order to '{self.name}'"
         )
-
-# c1 = Contact("John A", "JohnA@example.net")
-# c2 = Contact("John B", "JohnB@example.net")
-# c3 = Contact("John C", "JohnC@example.net")
-# print([c.name for c in Contact.all_contacts.search('John')])
-
 class LongNameDict(dict):
         def longest_key(self):
             longest = None
@@ -36,8 +30,17 @@ class LongNameDict(dict):
                     longest = key
             return longest
 
-longkeys = LongNameDict()
-longkeys['hello'] = 1
-longkeys['longest yet'] = 5
-longkeys['hello2'] = 'world'
-print(longkeys.longest_key())
+# class Friend(Contcat):
+#     def __init__(self, name, email, phone):
+#         self.name = name
+#         self.email = email
+#         self.phone = phone
+#           redundant code that's more difficult to manage
+#           also, we forgot to add to the contact list
+
+class Friend(Contact):
+    def __init__(self, name, email, phone):
+        super().__init__(name, email)
+        self.phone = phone
+
+#       super() returns the object as an instance of the parent class
