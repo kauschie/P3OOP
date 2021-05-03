@@ -13,7 +13,7 @@ class Menu:
             "4": self.modify_note,
             "5": self.quit,
         }
-    
+
     def display_menu(self):
         print(
             """
