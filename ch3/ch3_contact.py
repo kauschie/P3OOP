@@ -1,5 +1,15 @@
+class ContactList(list):
+    def search(self, name):
+        """Return all contacts that contain the search value
+        in their name"""
+        matching_contacts = []
+        for contact in self:
+            if name in contact.name:
+                matching_contacts.append(contact)
+        return matching_contacts
+        
 class Contact:
-    all_contacts = []
+    all_contacts = ContactList()
 
     def __init__(self, name, email):
         self.name = name
@@ -13,11 +23,8 @@ class Supplier(Contact):
             f"'{order}' order to '{self.name}'"
         )
 
-# c = Contact("Some Body", "somebody@example.net")
-# s = Supplier("Sup Plier", "supplier@example.net")
 
-# print(c.name, c.email,"\n",s.name, s.email)
-# print(c.all_contacts)
-# s.order("Supplier, I need pliers")
-# c.order("Contact, I need pliers")
-
+c1 = Contact("John A", "JohnA@example.net")
+c2 = Contact("John B", "JohnB@example.net")
+c3 = Contact("John C", "JohnC@example.net")
+print([c.name for c in Contact.all_contacts.search('John')])
